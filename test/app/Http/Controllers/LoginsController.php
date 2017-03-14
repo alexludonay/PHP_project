@@ -28,15 +28,19 @@ class LoginsController extends Controller
 
         if(isset($input["remember"]) && $input["remember"] == true )
         {
+
             Auth::attempt(array('email'=>$input["email"], 'password' => $input['password'],true));
+
         }
         else
         {
+
             Auth::attempt(array('email'=>$input["email"], 'password' => $input['password']));
+
         }
         if(Auth::check()){
             
-            return redirect(route('users.index'));
+            return redirect(route('users.index'))->with("success","Vous êtes connecter");
         }
         else{
             return redirect(route('login'))->with("danger","La combinaison Nom de compte mot de passe est incorrect.");

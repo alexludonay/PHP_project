@@ -13,17 +13,14 @@
                 {!! BootForm::email("Email","email")->placeholder("Entrez l'email de l'utilisateur")->required(false)!!}
                 {!! BootForm::password("Mot de passe","password")->placeholder("Entrez le nom de l'utilisateur")->required(true)!!}
                 {!! BootForm::password("Confirmer le mot de passe","password_confirmation")->placeholder("Entrez de nouveau le mot de passe")->required(true)!!}
+                {!! BootForm::select('Rôle', 'role')->options(['admin' => 'Administrateur', 'student' => 'Etudiant','teacher' =>'Professeur']) !!}
             </div>
         </div>
      </div>
         <div class="col-md-4 col-md-push-2">
             <div class="box-header box-primary">
-                <div class="box-header with-border">
-                    <h2 class="box-title">Date de Naissance</h2>
-                </div>
-                <div class="box-body">
-                    {!! BootForm::date('Date de Naissance',"birthday") !!}
-                </div>
+
+
              </div>
                 <div class="box-body">
                     <input class="btn btn-primary pull-right" type="submit" value="Créer"/>

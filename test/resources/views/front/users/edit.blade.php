@@ -15,6 +15,7 @@
                 {!! BootForm::email("Email","email")->placeholder("Entrez l'email de l'utilisateur")->required(false)->defaultValue($user->email)!!}
                 {!! BootForm::password("Mot de passe","password")->placeholder("Entrez le nom de l'utilisateur")!!}
                 {!! BootForm::password("Confirmer le mot de passe","password_confirmation")->placeholder("Entrez de nouveau le mot de passe")!!}
+                {!! BootForm::select('Rôle', 'role')->options(['admin' => 'Administrateur', 'student' => 'Etudiant','teacher' =>'Professeur']) !!}
             </div>
         </div>
     </div>

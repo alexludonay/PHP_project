@@ -15,7 +15,7 @@
            <div class="col-xs-8">
                <div class="checkbox">
                    <label>
-                       <input name="remerber" type="checkbox"> Se rappeler de moi
+                       <input name="remember" type="checkbox"/> Se rappeler de moi
                    </label>
                </div>
            </div>

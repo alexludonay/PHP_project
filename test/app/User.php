@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class User extends Authenticatable
 {
     protected $table = 'users';
-    protected $fillable = array("id", "nom", "prenom", "email", "login", "password", "tel",);
+    protected $fillable = array("id", "nom", "prenom", "email", "login", "password", "role","note");
     protected $hidden = array('password');
     public static $rules = array(
         "create" => array(
@@ -17,12 +17,15 @@ class User extends Authenticatable
             'prenom' => 'required|string|min:2',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:2|confirmed',
+            'role' => 'string|min:2',
+            'note' => 'string|min:2',
         ),
         "update" => array(
             'nom' => 'required|string|min:2',
             'prenom' => 'required|string|min:2',
             'email' => 'required|email',
-            'password' => 'string|min:2|confirmed'
+            'password' => 'string|min:2',
+            'role' => 'string|min:2',
         )
     );
 
@@ -40,5 +43,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany("App\Tag","user_tag","user_id","tag_id");
     }
+    
 
 }

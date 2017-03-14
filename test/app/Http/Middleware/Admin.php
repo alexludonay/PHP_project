@@ -13,8 +13,14 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, ...$autz)
     {
-        return $next($request);
+       if($this->auth->user()->hasAuth($az))
+       {
+             return $next($request);
+       }
+
     }
 }
+
+//$this->auth->user()->hasAuth($az)

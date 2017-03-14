@@ -20,6 +20,8 @@ class UsersController extends Controller
         $users = User::get();
         $users->load("tags");
         $users->load("commentaires");
+       ;
+       
 
         return view("front/users/index" , compact("users"));
     }
@@ -43,8 +45,10 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $this->validate($request,User::$rules["create"]);
+        $this->validate($request,User::$rules["create"]); 
         $status_create = User::create($input);
+        
+
 
         if($status_create)
         {
@@ -93,10 +97,11 @@ class UsersController extends Controller
         $user_update=User::findOrFail($id);
         $this->validate($request,User::$rules["update"]);
         $status_create = $user_update->update($input);
+        
 
         if($status_create)
         {
-            return redirect(route('users.edit', $user_update))->with("success", "L'utilisateur à été modifié");
+            return redirect(route('users.index', $user_update))->with("success", "L'utilisateur à été modifié");
         }
         else{
             return redirect()->back()->with("danger", "Une erreur est survenue, merci de bien vouloir recommencer")->withInput();

@@ -35,17 +35,3 @@ Route::get("deconnexion",
         "as"=> "deconnexion",
         "uses" => "LoginsController@deconnexion"
     ));
-
-//Commentaire
-
-Route::group(['prefix' => 'admin',
-'middleware'=>'auth',
-"namespace"=> "Admin"], function(){
-    Route::resource("commentaires","CommentairesController");
-});
-Route::resource("users","UsersController");
-
-// Admin Kernel
-Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
-    return "this page requires that you be logged in and an Admin";
-}]);

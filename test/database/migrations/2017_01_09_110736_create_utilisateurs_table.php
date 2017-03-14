@@ -20,8 +20,9 @@ class CreateUtilisateursTable extends Migration
             $table->string("nom");
             $table->string("prenom");
             $table->string("password");
+            $table->string("role")->default("studient");
+            $table->integer("note")->default(0);
             $table->rememberToken();
-            $table->string("token")->nullable();
             $table->timestamps();
         });
     }
